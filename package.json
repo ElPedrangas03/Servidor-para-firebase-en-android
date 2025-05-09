@@ -1,0 +1,25 @@
+{
+  "name": "servidor-para-firebase-en-android",
+  "version": "1.0.0",
+  "description": "Creación del servidor desarrollado con Node.js, para poder mandar las notificaciones push a la aplicación.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElPedrangas03/Servidor-para-firebase-en-android.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElPedrangas03/Servidor-para-firebase-en-android/issues"
+  },
+  "homepage": "https://github.com/ElPedrangas03/Servidor-para-firebase-en-android#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.3.0"
+  }
+}
