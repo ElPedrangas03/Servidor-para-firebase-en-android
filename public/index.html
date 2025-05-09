@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Enviar Notificación FCM</title>
+</head>
+<body>
+  <h2>Enviar Push a un Token</h2>
+
+  <form id="pushForm">
+    <label>Token del dispositivo:</label><br>
+    <textarea id="token" rows="4" cols="60" placeholder="Token del dispositivo Android"></textarea><br><br>
+
+    <label>Título:</label><br>
+    <input type="text" id="title" placeholder="Título del mensaje"><br><br>
+
+    <label>Mensaje:</label><br>
+    <input type="text" id="body" placeholder="Cuerpo del mensaje"><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <pre id="respuesta"></pre>
+
+  <script>
+    document.getElementById('pushForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const token = document.getElementById('token').value.trim();
+      const title = document.getElementById('title').value.trim();
+      const body = document.getElementById('body').value.trim();
+
+      const response = await fetch('/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, title, body })
+      });
+
+      const data = await response.json();
+      document.getElementById('respuesta').textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
