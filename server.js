@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const path = require('path');
 
+// Este archivo lo descargamos directamente de firebase, sin el
+// practicamente no funciona el envio de la notificacion
 const serviceAccount = require('./firebase-credentials.json');
 
 admin.initializeApp({
@@ -15,7 +17,7 @@ const PORT = 3000;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Endpoint POST para enviar notificación
+// Direccion que estamos recibiendo desde el lado del frontend
 app.post('/send', async (req, res) => {
     const { token, title, body } = req.body;
 
@@ -23,6 +25,7 @@ app.post('/send', async (req, res) => {
         return res.status(400).json({ error: 'Faltan datos' });
     }
 
+    // Estructura a mandar directamente a la app
     const message = {
         token,
         notification: {
